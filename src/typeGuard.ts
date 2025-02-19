@@ -23,5 +23,42 @@
     
     const sum5 = getSum("a", 4);
 
-    console.log({sum1, sum2, sum3, sum4, sum5})
+    console.log({sum1, sum2, sum3, sum4, sum5});
+
+    type NormalUser = {
+        name: string
+        email: string
+    }
+
+    type AdminUser = {
+        name: string
+        email: string
+        role: string
+    }
+
+    const users: (NormalUser | AdminUser)[] = [
+        {
+            name: "Hafij",
+            email: "hafij@email.com"
+        },
+        {
+            name: "Asad",
+            email: "asad@email.com",
+            role: "admin"
+        }
+    ];
+
+    const getUserType = (user: NormalUser | AdminUser) =>{
+        if("role" in user){
+            return "admin"
+        }else{
+            return "normal"
+        }
+    }
+
+    const userOneType = getUserType(users[0]);
+
+    const userTwoType = getUserType(users[1]);
+
+    console.log(userOneType, userTwoType);
 }
